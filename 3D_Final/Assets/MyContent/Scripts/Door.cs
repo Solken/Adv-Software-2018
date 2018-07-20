@@ -6,8 +6,8 @@ public class Door : MonoBehaviour {
 
     
 
-    public GameObject[] coins;
-    private GameObject rightC;
+    public Coin[] coins;
+    private Coin rightC;
     //private Color color;
     public Material[] mats;
     private Material my_mat;
@@ -57,12 +57,13 @@ public class Door : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-		//if(vaild)
-  //      {
-  //          //Debug.Log("DESTORY!");
-  //          DestroyObject(this.gameObject);
-  //      }
-	}
+        if (!vaild)
+        {
+            //Debug.Log("DESTORY!");
+            //DestroyObject(this.gameObject);
+            Destroy(this);
+        }
+    }
 
     void setTheCoin()
     {
@@ -72,7 +73,7 @@ public class Door : MonoBehaviour {
         rightC = coins[temp];
     }
 
-    void setColors(GameObject[] coins)
+    void setColors(Coin[] coins)
     {
         int color = Random.Range(0, 6);
         my_mat = mats[color];
@@ -108,7 +109,7 @@ public class Door : MonoBehaviour {
 
     }
 
-    void setCC(GameObject coin, Material mat)
+    void setCC(Coin coin, Material mat)
     {
         Renderer rend;
         rend = coin.GetComponent<Renderer>();
@@ -124,11 +125,20 @@ public class Door : MonoBehaviour {
             {
                 if (i == randC)
                 {
+                    //vaild = false;
+
                     Debug.Log("KILL ME!");
-                    DestroyObject(this.gameObject);
+                    //DestroyObject(this.gameObject);
+                    
                 }
+                
             }
         }
+    }
+
+    public Coin getCoin()
+    {
+        return rightC;
     }
 
    // public void setVaild(vaild)

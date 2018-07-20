@@ -30,7 +30,8 @@ public class Coin : MonoBehaviour {
         {
             //wallRef.decreseCount();
            // wallRef.removeCoin(this);   
-            DestroyObject(this.gameObject);
+            //DestroyObject(this.gameObject);
+            Destroy(this);
 
         }
     }
